@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    
+    <title></title>
+</head>
+<body onload="showdata()">
+
+      
+    
+        <input type="text" id="namee" placeholder="name"><br>
+        <input type="text" id="contactt" placeholder="contact"><br>
+        <input type="text"id="emaill"  placeholder="email"><br>
+        <button type="submit" onclick="data()">SAVE</button>
+        <br><br>
+  <hr>
+
+        <table border="2" id="tab">
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>CONTACT</th>
+                <th>EMAIL</th>
+            </tr>
+          
+        </table>
+<script>
+     $.ajaxSetup({
+ 	 		headers: { "X-CSRFToken": '{{csrf_token}}' }
+		});
+    function data(){
+        $.ajax({
+            url:'/add_ajax/',
+            type:'POST',
+            data:{
+                name : $('#namee').val(),
+                contact : $('#contactt').val(),
+                email : $('#emaill').val(),
+            },
+            success:function(response){
+                alert(response.message)
+                showdata()
+            }
+        })
+    }
+
+    function showdata(){
+        $.ajax({
+            url:'/viewajax/',
+            type:'GET',
+            success:function(response){
+                console.log(response.result)
+                $('.show').remove()
+                for(i=0;i<response.result.length;i++){
+                    $('#tab').append("<tr class='show'> <td>" + response.result[i].id +"</td> <td>" + response.result[i].name +"</td> <td>" + response.result[i].contact +"</td> <td>" + response.result[i].email +"</td> <td> <button onclick='deletedata("+response.result[i].id+")'> DELETE </button> </td> </tr>")
+                    
+                }
+            }
+        })
+    }
+    function deletedata(id){
+        $.ajax({
+            url:'/delajax/',
+            type:'POST',
+            data:{
+                cid:id
+            },
+            success:function(response){
+                alert(response.mssgg)
+                showdata()
+            }
+        })
+
+        
+    }
+</script>
+</body>
+</html>

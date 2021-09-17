@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,15 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 </head>
-<body bgcolor="grey">
-
-    <h1>HEADING</h1>
-    <h2>HEADING</h2>
-    <h3>HEADING</h3>
-    <h4>HEADING</h4>
-    <h5>HEADING</h5>
+<body>
+    <h1 class="h1">This is a heading</h1>
+    <p>As yrthcvi dsifnd that all wilsjdfi dufhingexhted og thw wrod and peirjnxvwu ewifndvcnkdnfdjf dncdjcn dcnjdc dcdf
+        edfh dshcfj kdsjfkldkc kjsdck dsk cksdcdlkc
+    </p>
+    <img class="img" src="{% static 'images/246986.png' %}" alt="" srcset="">
     
 </body>
 </html>

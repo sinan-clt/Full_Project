@@ -1,0 +1,21 @@
+.h1{
+    background-color: aqua;
+    border: beige;
+}
+p{
+    margin-left: 100px;
+    margin-right: 100px;
+    align-items: center;
+    color: brown;
+    border: azure;
+}
+
+.img{
+    width: 350px;
+    display: block;
+    height: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    
+}
